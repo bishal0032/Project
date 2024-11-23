@@ -1,55 +1,67 @@
-/**
- * SYST 17796 Project Base code.
- * Students can modify and extend to implement their game.
- * Add your name as an author and the date!
- */
 package ca.sheridancollege.project;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * A concrete class that represents any grouping of cards for a Game. HINT, you might want to subclass this more than
- * once. The group of cards has a maximum size attribute which is flexible for reuse.
+ * Represents a group of cards, such as a deck or discard pile. 
+ * This class can be further extended to model specific card groups.
  *
  * @author dancye
  * @author Paul Bonenfant Jan 2020
  */
 public class GroupOfCards {
 
-    //The group of cards, stored in an ArrayList
-    private ArrayList<Card> cards;
-    private int size;//the size of the grouping
+    private ArrayList<Card> cards; // The list of cards in the group
+    private int size; // The maximum size of the group of cards
 
     public GroupOfCards(int size) {
         this.size = size;
+        this.cards = new ArrayList<>();
     }
 
     /**
-     * A method that will get the group of cards as an ArrayList
-     *
-     * @return the group of cards.
+     * Add a card to the group of cards.
+     * 
+     * @param card the card to add
      */
-    public ArrayList<Card> getCards() {
-        return cards;
+    public void addCard(Card card) {
+        if (cards.size() < size) {
+            cards.add(card);
+        }
     }
 
+    /**
+     * Shuffle the cards in the group.
+     */
     public void shuffle() {
         Collections.shuffle(cards);
     }
 
     /**
-     * @return the size of the group of cards
+     * Get the list of cards in the group.
+     * 
+     * @return the list of cards
+     */
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
+    /**
+     * Get the size of the group.
+     * 
+     * @return the size of the group
      */
     public int getSize() {
         return size;
     }
 
     /**
-     * @param size the max size for the group of cards
+     * Set the maximum size of the group.
+     * 
+     * @param size the new size for the group
      */
     public void setSize(int size) {
         this.size = size;
     }
-
-}//end class
+}
